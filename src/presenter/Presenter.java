@@ -3,6 +3,8 @@ package presenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import model.Product;
+
 public class Presenter implements ActionListener , PresenterInterfaz{
 
 	/*
@@ -56,5 +58,6 @@ public class Presenter implements ActionListener , PresenterInterfaz{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }
