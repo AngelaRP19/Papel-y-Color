@@ -2,40 +2,21 @@ package model;
 
 import java.util.ArrayList;
 
-public class Worker {
+public class Worker extends Person{
  //SE PUEDE INCLUIR HERENCIA CREANDO UNA CLASE PERSONA
-	private int id;
-	private String name;
 	private String user;
 	private String password;
 	private Double salary;
 	private ArrayList<Bill> sells;
 	
 	public Worker(int id, String name, String user, String password, Double salary) {
-
-		this.id = id;
-		this.name = name;
+		super(id,name);
 		this.user = user;
 		this.password = password;
 		this.salary = salary;
 		this.sells = new ArrayList<Bill>();
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getUser() {
 		return user;
