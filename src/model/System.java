@@ -8,37 +8,69 @@ public class System implements ModelInterfaz {
 	private ArrayList<Worker> workers;
 	private ArrayList<Customer> customers;
 	private HashMap<String, ArrayList<Product>> catalog;
+
+
+	public System() {
+		workers = new ArrayList<Worker>();
+		customers = new ArrayList<Customer>();
+		catalog = new HashMap<String, ArrayList<Product>>();
+	}
 	
 	@Override
-	public void addProduct(Product product, String category) {
-		// TODO Auto-generated method stub
-		
+	public void addProduct(Product product, String categoryName) {
+		ArrayList<Product> category=catalog.get(categoryName);
+		if(category==null)
+			category=new ArrayList<Product>();
+		category.add(product);
+		catalog.put(categoryName, category);
 	}
 	@Override
 	public void addCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		
+		customers.add(customer);
 	}
 	@Override
-	public void showCatalog() {
-		// TODO Auto-generated method stub
-		
+	public HashMap<String,ArrayList<Product>> showCatalog(){
+		return catalog;
 	}
 	@Override
-	public Bill newBill(int idWorker, ArrayList<Product> products) {
-		// TODO Auto-generated method stub
+	public Bill newBill(int idWorker,int idCustomer, ArrayList<Product> products) {
+		Customer customer=searchCustomer(idCustomer);
+		Worker worker=searchWorker(idWorker);
+		Bill bill = new Bill(0, products, customer, worker, 0.0, 0.0, 0.0);
+		return bill;
+	}
+
+	public Customer searchCustomer(int id){
+		for (Customer customer : customers)
+			if(customer.getId()==id)
+				return customer;
 		return null;
 	}
-	@Override
-	public void calculateSalary(int id) {
-		// TODO Auto-generated method stub
-		
+	public Worker searchWorker(int id){
+		for (Worker worker : workers)
+			if(worker.getId()==id)
+				return worker;
+		return null;
 	}
+
+	@Override
+	public int calculateSalary(int id){
+		Worker worker=searchWorker(id);
+		int salary=0;
+		for (Bill bill : worker.getSells())
+			salary+=bill.getTotalValue();
+		return salary;
+	}
+
 	@Override
 	public void addUnitsProduct(int units, int id) {
-		// TODO Auto-generated method stub
-		
+		for (String i : catalog.keySet()) {
+			for(Product product : catalog.get(i)){
+				if(product.getCode()==id){
+					product.setUnits(product.getUnits()+units);
+					return;
+				}
+			}
+		}
 	}
-	
-	
 }

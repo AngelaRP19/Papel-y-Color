@@ -2,9 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
-public class Customer {
+public class Customer extends Person {
 
-	private int id;
-	private String name;
-	private ArrayList<Bill> sells;
+	private ArrayList<Bill> buys;
+	
+	public Customer(int id, String name) {
+		super(id, name);
+	}
+
+
 }
