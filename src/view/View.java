@@ -1,25 +1,44 @@
 package view;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class View extends JFrame implements ViewInterfaz{
 
+
+	private JFrame main;
+	private JPanel welcome;
+	private JPanel login;
+	private JPanel addAccount;
+
+	public View() {
+		this.main = new JFrame();
+		this.main.setTitle("Bienvenida");
+		this.main.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.pack();
+	}
+	
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
-		
+		this.welcome = new Welcome();
+		main.add(welcome);
+		this.main.setVisible(true);
 	}
-
+	
 	@Override
 	public void register() {
-		// TODO Auto-generated method stub
-		
+		this.login = new Background(new LogIn());
+		main.add(login);
+		this.main.setVisible(true);
+		this.pack();
 	}
 
 	@Override
 	public void newWorker() {
-		// TODO Auto-generated method stub
-		
+		this.addAccount = new Background(new NewAccount());
+		main.add(addAccount);
+		this.main.setVisible(true);
 	}
 
 	@Override
