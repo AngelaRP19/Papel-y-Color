@@ -1,3 +1,9 @@
+/**
+ * Producto
+ * Clase que representa un producto
+ * Tiene un id, nombre, precio, unidades disponibles y unidades vendidas
+ */
+
 package model;
 
 public class Product {
