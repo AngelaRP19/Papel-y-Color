@@ -9,14 +9,14 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class System implements ModelInterfaz {
+public class Stationery implements ModelInterfaz {
 
 	private ArrayList<Worker> workers;
 	private ArrayList<Customer> customers;
 	private HashMap<String, ArrayList<Product>> catalog;
 
 
-	public System() {
+	public Stationery() {
 		workers = new ArrayList<Worker>();
 		customers = new ArrayList<Customer>();
 		catalog = new HashMap<String, ArrayList<Product>>();

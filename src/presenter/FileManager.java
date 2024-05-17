@@ -240,11 +240,4 @@ public class FileManager {
         List<Worker> workers= (List<Worker>) xstream.fromXML(workersFile);
         return workers;
     } 
-
-
-    public static void main(String[] args) {
-        FileManager fm= new FileManager();
-        fm.readCustomers();
-    }
-    
 }

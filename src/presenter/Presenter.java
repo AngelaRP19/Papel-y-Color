@@ -5,22 +5,25 @@ import java.awt.event.ActionListener;
 
 import model.ModelInterfaz;
 import model.Product;
+import model.Stationery;
+import view.View;
+import view.ViewInterfaz;
 
 public class Presenter implements ActionListener , PresenterInterfaz{
 
-	/*
-	 * 
-	 * PONER ATRIBUTOS
-	 * 
-	 * */
-	
+	private ModelInterfaz system;
+	private ViewInterfaz view;
+
+	public Presenter() {
+		system = new Stationery();
+		view = new View();
+	}
 	public void login() {
-		
+		view.register();
 	}
 	@Override
 	public void addWorker() {
-		// TODO Auto-generated method stub
-		
+		view.newWorker();
 	}
 
 	@Override
