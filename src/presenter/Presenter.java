@@ -4,25 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.ModelInterfaz;
+import model.Product;
+import model.Stationery;
 import view.View;
 import view.ViewInterfaz;
 
 public class Presenter implements ActionListener , PresenterInterfaz{
 
-	private ViewInterfaz view;
 	private ModelInterfaz system;
+	private ViewInterfaz view;
 
-	public Presenter(){
+	public Presenter() {
+		system = new Stationery();
 		view = new View();
-		system= new model.System();
 	}
-
-	/*
-	 * 
-	 * PONER ATRIBUTOS
-	 * 
-	 * */
-	
 	public void login() {
 		view.register();
 	}
@@ -64,7 +59,8 @@ public class Presenter implements ActionListener , PresenterInterfaz{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("ingresar"));
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,16 +1,22 @@
+/*
+ * Sistema
+ * Clase que representa el sistema
+ * se encarga de manejar a lso clientes por medio de un trabajador
+ * 
+ */
 package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class System implements ModelInterfaz {
+public class Stationery implements ModelInterfaz {
 
 	private ArrayList<Worker> workers;
 	private ArrayList<Customer> customers;
 	private HashMap<String, ArrayList<Product>> catalog;
 
 
-	public System() {
+	public Stationery() {
 		workers = new ArrayList<Worker>();
 		customers = new ArrayList<Customer>();
 		catalog = new HashMap<String, ArrayList<Product>>();
@@ -24,19 +30,21 @@ public class System implements ModelInterfaz {
 		category.add(product);
 		catalog.put(categoryName, category);
 	}
+	
 	@Override
 	public void addCustomer(Customer customer) {
 		customers.add(customer);
 	}
+	
 	@Override
 	public HashMap<String,ArrayList<Product>> showCatalog(){
 		return catalog;
 	}
 	@Override
-	public Bill newBill(int idWorker,int idCustomer, ArrayList<Product> products) {
+	public Bill newBill(int idWorker,int idCustomer, ArrayList<Product> products,int cash) {
 		Customer customer=searchCustomer(idCustomer);
 		Worker worker=searchWorker(idWorker);
-		Bill bill = new Bill(0, products, customer, worker, 0.0, 0.0, 0.0);
+		Bill bill = new Bill( products, customer, worker, 0.0);
 		return bill;
 	}
 

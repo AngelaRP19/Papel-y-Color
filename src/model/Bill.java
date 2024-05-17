@@ -1,3 +1,8 @@
+/**
+ * Factura
+ * Crea una factura a partir de los productos seleccionados por el cliente
+ * Genera  el precio y el cambio 
+ */
 package model;
 
 import java.time.LocalDate;
@@ -13,19 +18,25 @@ public class Bill {
 	private Double totalValue;
 	private Double cash;
 	private Double change;
+	private static int numberBill = 0;
 	
 	
-	public Bill(int id,  List<Product> purchasedProducts, Customer customer, Worker worker,
-			Double totalValue, Double cash, Double change) {
-		super();
-		this.id = id;
+	public Bill(List<Product> purchasedProducts, Customer customer, Worker worker, Double cash) {
+		this.id = numberBill;
 		this.date = LocalDate.now();
 		this.purchasedProducts = purchasedProducts;
 		this.customer = customer;
 		this.worker = worker;
-		this.totalValue = totalValue;
 		this.cash = cash;
-		this.change = change;
+		this.totalValue = calculateTotalValue();
+		numberBill++;
+	}
+
+	public double calculateTotalValue(){
+		double total = 0.0;
+		for (Product product : purchasedProducts)
+			total += product.getPrice();
+		return total;
 	}
 
 
