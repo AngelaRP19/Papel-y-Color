@@ -3,9 +3,19 @@ package presenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.Product;
+import model.ModelInterfaz;
+import view.View;
+import view.ViewInterfaz;
 
 public class Presenter implements ActionListener , PresenterInterfaz{
+
+	private ViewInterfaz view;
+	private ModelInterfaz system;
+
+	public Presenter(){
+		view = new View();
+		system= new model.System();
+	}
 
 	/*
 	 * 
@@ -14,12 +24,11 @@ public class Presenter implements ActionListener , PresenterInterfaz{
 	 * */
 	
 	public void login() {
-		
+		view.register();
 	}
 	@Override
 	public void addWorker() {
-		// TODO Auto-generated method stub
-		
+		view.newWorker();
 	}
 
 	@Override
@@ -55,9 +64,7 @@ public class Presenter implements ActionListener , PresenterInterfaz{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(e.getActionCommand().equals("ingresar"));
 	}
-
 
 }
